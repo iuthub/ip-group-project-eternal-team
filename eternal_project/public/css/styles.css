@@ -1,0 +1,50 @@
+.navBarMenu {
+	clear: both;
+	width: 960px;
+	height: 45px;
+}
+
+.navBarMenu ul {
+	padding: 13px 0 0 0;
+	margin: 0;
+	list-style: none;
+}
+
+.navBarMenu ul li{
+	display: inline;
+}
+
+.navBarMenu ul li a{
+	float: left;
+	padding: 0 20px;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	color: black;
+}
+
+.productBox {
+	float: left;
+	width: 500px;
+	height: 500px;
+	padding: 10px;
+	border: 5px solid #333;
+	margin: 5px;
+}
+
+.cleaner {
+	clear: both;
+	width: 100%;
+	height: 1px;
+	font-size: 1px;	
+}
+
+img {
+	width: 150px;
+	height: 150px;
+	margin: 0px;
+	padding: 0px;
+	border: none;
+	clear: both;
+}

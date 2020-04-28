@@ -31,3 +31,20 @@ Route::post('create',[
    'uses'=> 'ItemController@postUserItemAdd',
     'as'=>'user.create'
 ]);
+
+
+Route::get('/edit/{id}',[
+    'uses' => 'ItemController@getEditItem',
+    'as'=>'edit.item'
+]);
+
+Route::post('/edit',[
+    'uses'=>'ItemController@postEditItem',
+    'as'=>'update.item'
+]);
+
+
+Route::get('/delete/{id}',[
+    'uses' => 'ItemController@deleteItem',
+    'as'=>'delete.item'
+]);

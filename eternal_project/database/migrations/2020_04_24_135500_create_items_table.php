@@ -20,6 +20,8 @@ class CreateItemsTable extends Migration
             $table->string('price');
             $table->date('year');
             $table->text('details');
+            $table->text('category');
+            $table->string('image')->nullable();
         });
     }
 

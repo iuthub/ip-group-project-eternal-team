@@ -44,6 +44,14 @@
                 <option value="services">Service</option>
             </select>
         </div>
+        <div class="form-user-create">
+
+            <label>
+                Image
+            </label>
+            <br>
+            <input type="file" name="image" class="form-input-user" id="image">
+        </div>
        @csrf
         <button type="submit" class="btn-submit" >Submit</button>
     </form>

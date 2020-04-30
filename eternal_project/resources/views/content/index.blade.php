@@ -8,9 +8,15 @@
      @foreach($items as $item)
 
     <div class="item-card-view">
+        <div class="image-card">
+            <img src="{{asset('uploads/item/' . $item->image)}}"  width="auto;" height="100px;" alt="image">
+        </div>
          <h1>{{ $item->name }}</h1>
           <p>{{ $item->price }}</p>
+
     </div>
+
+
 
     @endforeach
 </div>

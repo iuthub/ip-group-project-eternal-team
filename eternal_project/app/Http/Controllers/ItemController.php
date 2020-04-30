@@ -16,8 +16,8 @@ class ItemController extends Controller
 
    public function postUserItemAdd(Request $request){
       $this->validate($request,[
-         'name'=>'required|min:5',
-          'price'=>'required|min:5',
+          'name'=>'required|min:5',
+          'price'=>'required',
           'image' => 'file|image|max:4000'
       ]);
       $item =new Item([
@@ -72,8 +72,8 @@ class ItemController extends Controller
 
    public function deleteItem($id){
         $item =Item::find($id);
-      $item->delete();
-      return redirect()->route('main.index')->with('success','Task Deleted!');
+        $item->delete();
+       return redirect()->route('main.index')->with('success','Task Deleted!');
    }
 
 

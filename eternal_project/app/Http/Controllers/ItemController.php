@@ -18,17 +18,31 @@ class ItemController extends Controller
       $this->validate($request,[
          'name'=>'required|min:5',
           'price'=>'required|min:5',
+          'image' => 'file|image|max:4000'
       ]);
       $item =new Item([
           'name'=>$request->input('name'),
           'price'=>$request->input('price'),
           'details'=>$request->input('details'),
           'year'=>$request->input('year'),
-          'category'=>$request->input('category')
+          'category'=>$request->input('category'),
       ]);
+
+      if($request->hasFile('image')){
+          $file = $request->file('image');
+          $extension = $file->getClientOriginalExtension();
+          $filename = time() . '.' .$extension;
+          $file->move('uploads/item',$filename);
+          $item->image = $filename;
+      }
+      else{
+          return $request;
+          $item->image='';
+      }
       $item->save();
       return redirect()->route('main.index')->with('success','Item added to the store!');
    }
+
 
 
    public function getEditItem($id){

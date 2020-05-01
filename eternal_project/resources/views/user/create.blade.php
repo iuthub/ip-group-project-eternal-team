@@ -1,41 +1,48 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="form-background">
+
     <form action="{{route('user.create')}}" method="post" enctype="multipart/form-data">
-        <div class="form-user-create">
+        <div class="form-group">
            <label for="title">
                Name
            </label>
             <br>
-            <input type="text" class="form-input-user" id="name" name="name">
+            <input type="text" class="form-control" id="name" name="name">
         </div>
-        <div class="form-user-create">
+        <div class="form-group">
             <label for="price">
                 Price
             </label>
             <br>
-            <input type="text" class="form-input-user" id="price" name="price">
+            <input type="text" class="form-control" id="price" name="price">
         </div>
 
-        <div class="form-user-create">
+        <div class="form-group">
             <label for="details">
                Details
             </label>
             <br>
-            <input type="text" class="form-input-user" id="details" name="details">
-
+            <input type="text" class="form-control" id="details" name="details">
         </div>
-        <div class="form-user-create">
-            <label for="year">
-                Year
+
+
+
+
+        <div class="form-group">
+            <label for="state">
+                State
             </label>
             <br>
-            <input type="date"  class="form-input-user" id="year" name="year">
+            <input type="text" class="form-control" id="state" name="state">
         </div>
-        <div class="form-user-create">
+
+
+
+
+        <div class="form-group">
             <label for="category">Category</label>
-            <select id="category" name="category" class="form-user-create">
+            <select id="category" name="category" class="form-control">
                 <option value="sports">Sports</option>
                 <option value="electronics">Electronics</option>
                 <option value="others">Others</option>
@@ -44,17 +51,17 @@
                 <option value="services">Service</option>
             </select>
         </div>
-        <div class="form-user-create">
-
+        <div class="form-group">
             <label>
                 Image
             </label>
             <br>
-            <input type="file" name="image" class="form-input-user" id="image">
+            <input type="file" name="image" class="form-control-file" id="image">
         </div>
+
        @csrf
-        <button type="submit" class="btn-submit" >Submit</button>
+        <button type="submit" class="btn btn-primary" >Submit</button>
     </form>
-</div>
+
 @endsection
 

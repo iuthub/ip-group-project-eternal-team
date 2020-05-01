@@ -25,6 +25,9 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        Gate::define('auth-only',function ($user,$item){
+            return $user->id === $item->user_id;
+        });
         //
     }
 }

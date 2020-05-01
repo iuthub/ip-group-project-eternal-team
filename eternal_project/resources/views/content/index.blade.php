@@ -3,7 +3,16 @@
 
 @section('content')
 
-    <h1>This is index page</h1>
+    <div>
+        <form action="{{route('search.item')}}" method="get" class="form-user-create">
+            <label for="search">
+                <input type="text" name="search" id="search" class="input-group">
+            </label>
+            @csrf
+            <button type="submit" class="btn-submit">Search</button>
+        </form>
+
+    </div>
 <div class="index-items-table">
      @foreach($items as $item)
 

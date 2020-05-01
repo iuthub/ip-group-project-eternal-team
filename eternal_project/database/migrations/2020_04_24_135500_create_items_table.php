@@ -18,10 +18,11 @@ class CreateItemsTable extends Migration
             $table->timestamps();
             $table->string('name');
             $table->string('price');
-            $table->date('year');
             $table->text('details');
             $table->text('category');
+            $table->text('state');
             $table->string('image')->nullable();
+            $table->integer('user_id');
         });
     }
 

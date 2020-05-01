@@ -3,14 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Item;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use function GuzzleHttp\Promise\task;
 
 class ItemController extends Controller
 {
+public function __construct()
+{
+$this->middleware('auth');
+}
+
+
     public  function getItemsMain()
    {
-    $items = Item::orderBy('created_at', 'desc')->paginate();
+    $items = Item::orderBy('created_at', 'desc')->paginate(20);
     return view('content.index', ['items' => $items]);
    }
 
@@ -18,14 +26,16 @@ class ItemController extends Controller
       $this->validate($request,[
           'name'=>'required|min:5',
           'price'=>'required',
-          'image' => 'file|image|max:4000'
+          'image' => 'file|image|max:4000',
       ]);
+
+
       $item =new Item([
           'name'=>$request->input('name'),
           'price'=>$request->input('price'),
           'details'=>$request->input('details'),
-          'year'=>$request->input('year'),
           'category'=>$request->input('category'),
+           'state'=>$request->input('state')
       ]);
 
       if($request->hasFile('image')){
@@ -39,6 +49,12 @@ class ItemController extends Controller
           return $request;
           $item->image='';
       }
+
+      $item->user_id = auth()->user()->id;
+//      if(Gate::denies('auth-only',$item)){
+//          return redirect()->back()->with('error','You are not authorized to delete this! bee');
+//      };
+
       $item->save();
       return redirect()->route('main.index')->with('success','Item added to the store!');
    }
@@ -56,14 +72,19 @@ class ItemController extends Controller
        $this->validate($request,[
            'name'=>'required|min:5',
            'price'=>'required|min:5',
+
        ]);
 
        $item =Item::find($request->input('id'));
-
+//       if(Gate::denies('auth-only',$item)){
+//           return redirect()->back()->with([
+//               'error' => 'Unauthorized action'
+//           ]);
+//       }
        $item->name = $request->input('name');
        $item->price = $request->input('price');
        $item->details = $request->input('details');
-       $item->year = $request->input('year');
+       $item->state = $request->input('state');
        $item->category = $request->input('category');
        $item->save();
        return redirect()->route('main.index')->with('success','Item Edited!');
@@ -72,8 +93,19 @@ class ItemController extends Controller
 
    public function deleteItem($id){
         $item =Item::find($id);
+//        if(Gate::denies('auth-only',$item)){
+//            return redirect()->back()->with('error','You are not authorized to delete this! bee');
+//        }
         $item->delete();
-       return redirect()->route('main.index')->with('success','Task Deleted!');
+       return redirect()->route('main.index')->with('success','Item Deleted!');
+   }
+
+
+   public function searchItem(Request $request){
+        $search = $request->get('search');
+        $items = DB::table('items')->where('name','like','%'.$search.'%')->paginate(2);
+        return view('content.index',['items'=>$items]);
+
    }
 
 

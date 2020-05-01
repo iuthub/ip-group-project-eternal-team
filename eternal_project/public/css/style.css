@@ -1,14 +1,14 @@
-.form-user-create{
-    margin: 16px;
-    padding:16px;
-}
-.form-input-user{
-    padding: 15px;
-    width: 75%;
-    border: 1px solid darkblue;
-    border-radius: 5px;
-    color: black;
-}
+/*.form-user-create{*/
+/*    margin: 16px;*/
+/*    padding:16px;*/
+/*}*/
+/*.form-input-user{*/
+/*    padding: 15px;*/
+/*    width: 90%;*/
+/*    border: 1px solid darkblue;*/
+/*    border-radius: 5px;*/
+/*    color: black;*/
+/*}*/
 .btn-submit{
     background-color: lightgreen;
     color: white;
@@ -18,14 +18,14 @@
     margin: 15px;
 }
 
-.container{
-    display: flex;
-    border: 3px solid crimson;
-    flex-direction: column;
-    /*align-items: center;*/
-    background-color: #d9dec8;
-    flex-wrap: wrap;
-}
+/*.container{*/
+/*    display: flex;*/
+/*    border: 3px solid crimson;*/
+/*    flex-direction: column;*/
+/*    !*align-items: center;*!*/
+/*    background-color: #d9dec8;*/
+/*    flex-wrap: wrap;*/
+/*}*/
 
 .form-background{
     background-color: aliceblue;

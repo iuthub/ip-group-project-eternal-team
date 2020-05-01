@@ -48,3 +48,17 @@ Route::get('/delete/{id}',[
     'uses' => 'ItemController@deleteItem',
     'as'=>'delete.item'
 ]);
+
+
+Route::get('/search',[
+    'uses' => 'ItemController@searchItem',
+    'as' => 'search.item'
+]);
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -10,3 +10,7 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+bootstrap/compiled.php
+app/storage/
+/.vagrant
+.phpunit.result.cache

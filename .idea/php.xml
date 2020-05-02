@@ -96,6 +96,7 @@
       <path value="$PROJECT_DIR$/eternal_project/vendor/hamcrest/hamcrest-php" />
       <path value="$PROJECT_DIR$/eternal_project/vendor/tijsverkoyen/css-to-inline-styles" />
       <path value="$PROJECT_DIR$/eternal_project/vendor/dragonmantank/cron-expression" />
+     
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

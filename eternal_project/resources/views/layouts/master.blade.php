@@ -17,6 +17,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    {{--  Bootsrap files  --}}
+    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
 </head>
 <body>
 <div id="app">
@@ -27,4 +30,5 @@
     </main>
 </div>
 </body>
+<script src="{{asset('bootstrap/js/bootstrap.js')}}"></script>
 </html>

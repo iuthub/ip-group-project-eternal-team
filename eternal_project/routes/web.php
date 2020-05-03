@@ -38,7 +38,7 @@ Route::get('/edit/{id}',[
     'as'=>'edit.item'
 ]);
 
-Route::post('/edit',[
+Route::post('/update/{id}',[
     'uses'=>'ItemController@postEditItem',
     'as'=>'update.item'
 ]);
@@ -54,6 +54,34 @@ Route::get('/search',[
     'uses' => 'ItemController@searchItem',
     'as' => 'search.item'
 ]);
+
+
+Route::get('/itemInfo/{id}',[
+    'uses' => 'ItemController@getItemInfo',
+    'as' => 'info.item'
+]);
+
+
+Route::get('/cart/item/{id}',
+    ['uses'=>'ItemController@addItemToCart',
+        'as' => 'cart.item']);
+
+Route::get('/myCart/{id}',[
+    'uses'=>'ItemController@myCart',
+    'as'=>'mycart.items'
+]);
+
+Route::get('removefromcart/{id}',[
+    'uses'=>'ItemController@removeFromCart',
+    'as'=>'remove.item.cart'
+]);
+
+Route::get('search/category',[
+    'uses'=>'ItemController@displayCategory',
+    'as'=>'display.category'
+]);
+
+
 
 Auth::routes();
 

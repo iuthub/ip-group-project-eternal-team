@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <form action="{{route('update.item')}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('update.item',['id'=>$item->id])}}" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="title">
                 Name
@@ -27,10 +27,6 @@
             <br>
             <input type="text" class="form-control" id="details" name="details" value="{{$item->details}}">
         </div>
-
-
-
-
         <div class="form-group">
             <label for="state">
                 State
@@ -38,10 +34,6 @@
             <br>
             <input type="text" class="form-control" id="state" name="state" value="{{$item->state}}">
         </div>
-
-
-
-
         <div class="form-group" >
             <label for="category">Category</label>
             <select id="category" name="category" class="form-control">

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Item;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+       $user_id = auth()->user()->id;
+       $items = Item::where('user_id','=',$user_id)->get();
+       return view('user.home',['items'=>$items]);
     }
 }

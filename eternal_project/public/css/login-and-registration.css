@@ -1,0 +1,24 @@
+body.login-and-registration{
+	background-image: url(../images/backsignup.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Roboto', sans-serif;
+    background-attachment: fixed;}
+
+.card-header{
+    text-align: center;
+}
+
+nav.card-header{
+    display: flex;
+    font-weight: 300;
+    font-size: 25px;
+}
+
+nav.card-header > div {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+

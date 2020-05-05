@@ -17,11 +17,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!--Custom Styles -->
+    <link href="{{ asset('css/login-and-registration.css') }}" rel="stylesheet" >
 
     {{--  Bootsrap files  --}}
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
 </head>
-<body>
+
 <div id="app">
 
     @include('partials.navbar')
@@ -36,6 +38,6 @@
     </main>
 </div>
 {{--@include('partials.footer')--}}
-</body>
+
 <script src="{{asset('bootstrap/js/bootstrap.js')}}"></script>
 </html>

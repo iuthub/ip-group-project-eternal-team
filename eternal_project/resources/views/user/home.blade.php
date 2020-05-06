@@ -9,6 +9,20 @@
             </div>
         @endif
     </div>
+
+    <div>
+        <h1>My personal Info</h1>
+{{--        @dd($user)--}}
+        <h1>Name: {{$user->name}}</h1>
+        <h2>Mail: {{$user->email}}</h2>
+        <h3>Items posted: {{count($items)}}</h3>
+    </div>
+
+
+
+
+
+
     <a href="{{route('mycart.items',['id'=>auth()->user()->id])}}"><button class="btn btn-success">My Cart</button></a>
     @if(count($items)>0)
     <h1>My Sale Announcements</h1>

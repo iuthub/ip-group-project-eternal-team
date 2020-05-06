@@ -22,3 +22,59 @@ nav.card-header > div {
     cursor: pointer;
 }
 
+nav.card-header > div.selected {
+    border-bottom: 3px solid #F23545;
+}
+
+body >.container {
+    width: 500px;
+    border: 0;
+    border-radius: 5px;
+    background: rgba(229, 229, 229,0.2);
+    margin: 1px auto;
+}
+
+.container > div {
+    padding: 10px;
+}
+
+.container > div input {
+    width: 100%;
+    border: 1px solid blue;
+    padding: 10px;
+    margin-top: 10px;
+    box-sizing: border-box;
+    outline: none;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.btn .btn-primary{
+    background: #F23545;
+    width: 100%;
+    font-size: 20px;
+    border-radius: 23px;
+    height: 46px;
+}
+
+#login,
+#register {
+    display: none;
+}
+
+#login.show,
+#signup.show {
+    display: block;
+}
+
+.social-pages {
+    text-align: center;
+}
+
+.social-pages img {
+    width: 30px;
+    margin: 0 15px;
+    box-shadow: 0 0 20px 0 #7f7f7f3d;
+    cursor: pointer;
+    border-radius: 50%;
+}

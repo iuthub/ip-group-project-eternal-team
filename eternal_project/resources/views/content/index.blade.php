@@ -2,9 +2,6 @@
 @extends('layouts.master')
 
 @section('content')
-
-
-
         <form action="{{route('search.item')}}" method="get" class="form-group">
             <label for="search">
                 <input type="text" name="search" id="search" class="form-control">
@@ -21,13 +18,12 @@
             <img src="{{asset('uploads/item/' . $item->image)}}"  width="auto;" height="100px;" alt="image">
         </div>
          <h1>{{ $item->name }}</h1>
-          <p>{{ $item->price }}</p>
+          <p>{{ $item->price }} {{$item->currency}}</p>
+        @if($item->user_id!=auth()->user()->id)
         <a href="{{route('cart.item',['id'=>$item->id])}}">Add to Cart</a>
+        @endif
     </div>
     </a>
-
-
-
     @endforeach
 </div>
 @endsection

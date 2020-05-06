@@ -15,8 +15,13 @@
                 Price
             </label>
             <br>
-            <input type="text" class="form-control" id="price" name="price">
+            <input type="number" class="form-control" id="price" name="price">
+            <select id="currency" name="currency" class="form-control">
+                <option value="UZS">UZS</option>
+                <option value="USD">USD</option>
+            </select>
         </div>
+
 
         <div class="form-group">
             <label for="details">

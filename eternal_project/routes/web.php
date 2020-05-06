@@ -21,10 +21,20 @@ Route::get('/create',function(){
     return view('user/create');
 });
 
+Route::post('sendmail',[
+    'uses'=>'ContactController@saveContact',
+    'as'=>'contact.save'
+]);
+
 
 Route::get('/',[
    'uses'=>'ItemController@getItemsMain',
     'as'=>'main.index'
+]);
+
+Route::get('contact_us',[
+    'uses'=>'ContactController@getContactView',
+    'as'=>'contact.us'
 ]);
 
 Route::post('create',[
@@ -81,6 +91,10 @@ Route::get('search/category',[
     'as'=>'display.category'
 ]);
 
+Route::post('/rate/item/{id}',[
+    'uses'=>'ItemController@rateItem',
+    'as'=>'rate.item'
+]);
 
 
 Auth::routes();
@@ -90,3 +104,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('protected',['middleware'=>['auth','admin']],function (){
+    return view('admin.index');
+});

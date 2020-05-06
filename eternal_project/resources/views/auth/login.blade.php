@@ -11,7 +11,7 @@
                     </nav>
 
                     <!--log-in-->
-                    <div class="card-body-log-in" id="log-in">
+                    <div class="card-body-log-in" id="log-in" class="show">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="form-group row">
@@ -115,7 +115,12 @@
                         </form>
                     </div>
                     <!--end-of-register-->
-
+            <div class="social-pages">
+                <img src="images/vk.svg" class="vk">
+                <img src="images/facebook.svg">
+                <img src="images/google.svg">
+                <img src="images/instagram.svg">
+            </div>
                 </div>
             </div>
         </div>

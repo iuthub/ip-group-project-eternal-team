@@ -4,56 +4,61 @@
 
 @section('content')
 
-    <div class="form-background">
-        <h1>{{$item->id}}</h1>
-        <form action="{{route('update.item')}}" method="post" enctype="multipart/form-data">
-            <div class="form-user-create">
-                <label for="title">
-                    Name
-                </label>
-                <br>
-                <input type="text" class="form-input-user" id="name" name="name" value="{{$item->name}}">
-            </div>
-            <div class="form-user-create">
-                <label for="price">
-                    Price
-                </label>
-                <br>
-                <input type="text" class="form-input-user" id="price" name="price" value="{{$item->price}}">
-            </div>
+    <form action="{{route('update.item',['id'=>$item->id])}}" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="title">
+                Name
+            </label>
+            <br>
+            <input type="text" class="form-control" id="name" name="name" value="{{$item->name}}">
+        </div>
+        <div class="form-group">
+            <label for="price">
+                Price
+            </label>
+            <br>
+            <input type="number" class="form-control" id="price" name="price" value="{{$item->price}}">
+            <select id="currency" name="currency" class="form-control">
+                <option value="USD">USD</option>
+            </select>
+        </div>
 
-            <div class="form-user-create">
-                <label for="details">
-                    Details
-                </label>
-                <br>
-                <input type="text" class="form-input-user" id="details" name="details" value="{{$item->details}}">
+        <div class="form-group">
+            <label for="details">
+                Details
+            </label>
+            <br>
+            <input type="text" class="form-control" id="details" name="details" value="{{$item->details}}">
+        </div>
+        <div class="form-group">
+            <label for="state">
+                State
+            </label>
+            <br>
+            <input type="text" class="form-control" id="state" name="state" value="{{$item->state}}">
+        </div>
+        <div class="form-group" >
+            <label for="category">Category</label>
+            <select id="category" name="category" class="form-control">
+                <option value="sports">Sports</option>
+                <option value="electronics">Electronics</option>
+                <option value="others">Others</option>
+                <option value="animals">Animals</option>
+                <option value="books">Books</option>
+                <option value="services">Service</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>
+                Image
+            </label>
+            <br>
+            <input type="file" name="image" class="form-control-file" id="image">
+        </div>
 
-            </div>
-            <div class="form-user-create">
-                <label for="year">
-                    Year
-                </label>
-                <br>
-                <input type="date"  class="form-input-user" id="year" name="year" value="{{$item->year}}">
-            </div>
-            <div class="form-user-create">
-                <label for="category">Category</label>
-                <select id="category" name="category" class="form-user-create">
-                    <option value="sports">Sports</option>
-                    <option value="electronics">Electronics</option>
-                    <option value="others">Others</option>
-                    <option value="animals">Animals</option>
-                    <option value="books">Books</option>
-                    <option value="services">Service</option>
-                    <option value="clothes">Clothes</option>
-                </select>
-            </div>
-            <input type="hidden" name="id" value="{{$item->id}}">
-            @csrf
-            <button type="submit" class="btn-submit" >Submit</button>
-        </form>
-    </div>
+        @csrf
+        <button type="submit" class="btn btn-primary" >Submit</button>
+    </form>
 
 
 

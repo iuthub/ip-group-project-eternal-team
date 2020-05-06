@@ -23,9 +23,13 @@
 </head>
 <body>
 <div id="app">
+
+
     @include('partials.navbar')
     @include('partials.message')
     @include('partials.category')
+
+
     <main class="py-4">
         @yield('content')
     </main>

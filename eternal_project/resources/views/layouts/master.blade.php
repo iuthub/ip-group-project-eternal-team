@@ -40,4 +40,7 @@
 {{--@include('partials.footer')--}}
 
 <script src="{{asset('bootstrap/js/bootstrap.js')}}"></script>
+<!--Custom-js-file-->
+<script src="{{asset('js/modeChanger.js')}}"></script>
+
 </html>

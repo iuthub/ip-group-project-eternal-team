@@ -17,7 +17,12 @@ public function cart(){
 }
 
 public function rating(){
-    $this->hasMany('App\Rating','item_id');
+    return $this->hasMany('App\Rating','item_id');
+}
+
+public function comments(){
+    return $this->hasMany(Comments::class,'item_id');
+
 }
 
 

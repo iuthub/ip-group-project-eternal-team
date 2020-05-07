@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','contact','admin'
     ];
 
     /**
@@ -35,9 +35,22 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'isAdmin'=>'boolean'
     ];
 
-    public function items(){
-return $this->hasMany('App\Item','user_id');
+    public function item(){
+      return $this->hasMany('App\Item','item_id');
     }
+    public function carts(){
+        return $this->hasOne('App\Cart','user_id');
+    }
+
+    public function isAdmin(){
+        return $this->isAdmin;
+    }
+
+    public function comments(){
+        return $this->hasMany(Comments::class,'user_id');
+    }
+
 }

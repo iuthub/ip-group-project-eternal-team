@@ -6,7 +6,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Mum Buy</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -23,12 +23,18 @@
 </head>
 <body>
 <div id="app">
+
+
     @include('partials.navbar')
     @include('partials.message')
+    @include('partials.category')
+
+
     <main class="py-4">
         @yield('content')
     </main>
 </div>
+{{--@include('partials.footer')--}}
 </body>
 <script src="{{asset('bootstrap/js/bootstrap.js')}}"></script>
 </html>

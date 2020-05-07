@@ -15,8 +15,12 @@
                 Price
             </label>
             <br>
-            <input type="text" class="form-control" id="price" name="price">
+            <input type="number" class="form-control" id="price" name="price">
+            <select id="currency" name="currency" class="form-control">
+                <option value="USD">USD</option>
+            </select>
         </div>
+
 
         <div class="form-group">
             <label for="details">
@@ -43,11 +47,13 @@
         <div class="form-group">
             <label for="category">Category</label>
             <select id="category" name="category" class="form-control">
+                <option value="services">Clothing</option>
                 <option value="sports">Sports</option>
                 <option value="electronics">Electronics</option>
                 <option value="others">Others</option>
                 <option value="animals">Animals</option>
                 <option value="books">Books</option>
+                <option value="cars">Cars</option>
                 <option value="services">Service</option>
             </select>
         </div>

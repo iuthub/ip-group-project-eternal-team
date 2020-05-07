@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <form action="{{route('update.item')}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('update.item',['id'=>$item->id])}}" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="title">
                 Name
@@ -17,7 +17,10 @@
                 Price
             </label>
             <br>
-            <input type="text" class="form-control" id="price" name="price" value="{{$item->price}}">
+            <input type="number" class="form-control" id="price" name="price" value="{{$item->price}}">
+            <select id="currency" name="currency" class="form-control">
+                <option value="USD">USD</option>
+            </select>
         </div>
 
         <div class="form-group">
@@ -27,10 +30,6 @@
             <br>
             <input type="text" class="form-control" id="details" name="details" value="{{$item->details}}">
         </div>
-
-
-
-
         <div class="form-group">
             <label for="state">
                 State
@@ -38,10 +37,6 @@
             <br>
             <input type="text" class="form-control" id="state" name="state" value="{{$item->state}}">
         </div>
-
-
-
-
         <div class="form-group" >
             <label for="category">Category</label>
             <select id="category" name="category" class="form-control">

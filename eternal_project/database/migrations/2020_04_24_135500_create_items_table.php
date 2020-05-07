@@ -17,12 +17,14 @@ class CreateItemsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->string('price');
+            $table->double('price');
+            $table->string('currency');
             $table->text('details');
             $table->text('category');
             $table->text('state');
             $table->string('image')->nullable();
             $table->integer('user_id');
+            $table->double('rating')->default(0.0);
         });
     }
 

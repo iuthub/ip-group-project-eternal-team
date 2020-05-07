@@ -1,6 +1,7 @@
-# Internet Programming: Group Project Assignment
+Добовление товара работает хорошо.
 
-Find `ip_group_project.pdf` file in this folder, and refer to all the instructions given there. 
+Комменты не получается сделать, надо ли их вообще делать. 
 
-You have to submit your project into this repository before 10.05.2019 (midnight).
+Я попытаюсь сделать бек для contact us. что бы через mail могли связываться.
 
+еще можно добавить плагин для прямого общения с посетителями.

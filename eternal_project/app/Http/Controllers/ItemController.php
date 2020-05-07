@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Cart;
 use App\CartBought;
+
+use App\Comments;
+
+
 use App\Item;
 use App\Rating;
 use App\User;
@@ -195,6 +199,24 @@ $this->middleware('auth');
       $rating = Rating::select('mark_given_by_user')->where('item_id',$id)->avg('mark_given_by_user');
       return $rating;
    }
+
+
+   public function comment(Request $request, $id){
+    $user_id = \auth()->user()->id;
+    $comment = new Comments([
+       'user_id'=>$user_id,
+        'item_id'=>$id,
+        'comment'=>$request->input('comment')
+    ]);
+    $comment->save();
+    return route('info.item',['id'=>$id]);
+   }
+
+
+   public function fetch_comment($id){
+    
+   }
+
 
 
 

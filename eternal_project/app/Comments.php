@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comments extends Model
 {
+
     protected $fillable = ['user_id','item_id','comment'];
 
 
@@ -15,5 +16,6 @@ class Comments extends Model
     public function uset(){
         return $this->belongsTo(User::class,'user_id');
     }
+
 
 }

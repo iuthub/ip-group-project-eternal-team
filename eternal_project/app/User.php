@@ -49,8 +49,10 @@ class User extends Authenticatable
         return $this->isAdmin;
     }
 
+
     public function comments(){
         return $this->hasMany(Comments::class,'user_id');
     }
+
 
 }

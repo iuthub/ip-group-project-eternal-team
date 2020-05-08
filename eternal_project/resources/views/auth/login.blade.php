@@ -1,4 +1,5 @@
 @extends('layouts.master')
+
 @section('content')
 <body class="login-and-registration">
     <div class="container">
@@ -11,7 +12,7 @@
                     </nav>
 
                     <!--log-in-->
-                    <div class="card-body-log-in" id="log-in" class="show">
+                    <div class="card-body-log-in show" id="login">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="form-group row">
@@ -126,4 +127,5 @@
         </div>
     </div>
 </body>
+
 @endsection

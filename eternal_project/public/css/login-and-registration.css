@@ -58,12 +58,12 @@ body >.container {
 }
 
 #login,
-#register {
+#register{
     display: none;
 }
 
 #login.show,
-#signup.show {
+#register.show {
     display: block;
 }
 

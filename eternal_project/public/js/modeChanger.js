@@ -1,8 +1,8 @@
-const loginSelector = document.querySelector('.container nav .login');
-const registerSelector = document.querySelector('.container nav .register');
+const loginSelector = document.querySelector('.card nav .login');
+const registerSelector = document.querySelector('.card nav .register');
 
-const loginSelection = document.querySelector('.container #log-in');
-const registerSelection = document.querySelector('.container #register');
+const loginSelection = document.querySelector('#login');
+const registerSelection = document.querySelector('#register');
 
 registerSelector.addEventListener('click', function(){
 	registerSelector.classList.add('selected');
@@ -14,6 +14,6 @@ registerSelector.addEventListener('click', function(){
 loginSelector.addEventListener('click', function(){
 	loginSelector.classList.add('selected');
 	registerSelector.classList.remove('selected');
-	loginSelection.classList.add('show');
 	registerSelection.classList.remove('show');
+	loginSelection.classList.add('show');
 });

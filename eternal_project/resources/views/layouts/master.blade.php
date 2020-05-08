@@ -38,9 +38,9 @@
     </main>
 </div>
 {{--@include('partials.footer')--}}
-
+   <!--Jquery-->
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script defer src="{{asset('js/modeChanger.js')}}"></script>
 <script src="{{asset('bootstrap/js/bootstrap.js')}}"></script>
 <!--Custom-js-file-->
-<script src="{{asset('js/modeChanger.js')}}"></script>
-
 </html>

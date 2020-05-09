@@ -3,7 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\CartBought;
+
+use App\Comments;
+
+
 use App\Item;
+use App\Rating;
 use App\User;
 use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
@@ -38,6 +44,7 @@ $this->middleware('auth');
           'name'=>$request->input('name'),
           'price'=>$request->input('price'),
           'details'=>$request->input('details'),
+          'currency'=>$request->input('currency'),
           'category'=>$request->input('category'),
            'state'=>$request->input('state')
       ]);
@@ -89,6 +96,7 @@ $this->middleware('auth');
        $item->price = $request->input('price');
        $item->details = $request->input('details');
        $item->state = $request->input('state');
+       $item->currency = $request->input('currency');
        $item->category = $request->input('category');
        if($request->hasFile('image')){
            $file = $request->file('image');
@@ -108,6 +116,8 @@ $this->middleware('auth');
 //        if(Gate::denies('auth-only',$item)){
 //            return redirect()->back()->with('error','You are not authorized to delete this! bee');
 //        }
+       $item_from_cart = Cart::find($id);
+       $item_from_cart->delete();
         $item->delete();
        return redirect()->route('home')->with('success','Item Deleted!');
    }
@@ -143,7 +153,7 @@ $this->middleware('auth');
        $user = auth()->user()->id;
         $items_id = Cart::select('item_id')->where('user_id',$user)->get();
         $items=Item::findMany($items_id);
-        return view('content.mycart', ['items'=> $items]);
+        return view('content.mycart', ['items'=> $items,'price'=>$this->getPrice()]);
    }
 
 
@@ -159,6 +169,55 @@ $this->middleware('auth');
        $items = DB::table('items')->where('category','like','%'.$search.'%')->paginate();
        return view('content.index',['items'=>$items]);
    }
+
+   public function getPrice(){
+     $items_id = Cart::select('item_id')->where('user_id',\auth()->user()->id)->get();
+     $items = Item::findMany($items_id);
+     $price_to_pay = 0;
+     foreach ($items as $item){
+         $price_to_pay+=$item->price;
+     }
+     return $price_to_pay;
+   }
+
+   public function rateItem(Request $request, $id){
+      $rate = new Rating(
+          [
+              'item_id'=>$id,
+              'mark_given_by_user'=>$request->input('mark')
+          ]
+      );
+
+      $rate->save();
+      $item = Item::find($id);
+      $item->rating = $this->showRating($id);
+      $item->save();
+      return back()->with('success','Added!');
+   }
+
+   public function showRating($id){
+      $rating = Rating::select('mark_given_by_user')->where('item_id',$id)->avg('mark_given_by_user');
+      return $rating;
+   }
+
+
+   public function comment(Request $request, $id){
+    $user_id = \auth()->user()->id;
+    $comment = new Comments([
+       'user_id'=>$user_id,
+        'item_id'=>$id,
+        'comment'=>$request->input('comment')
+    ]);
+    $comment->save();
+    return route('info.item',['id'=>$id]);
+   }
+
+
+   public function fetch_comment($id){
+    
+   }
+
+
 
 
 

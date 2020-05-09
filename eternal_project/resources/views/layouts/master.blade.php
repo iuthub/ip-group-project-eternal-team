@@ -26,13 +26,15 @@
 
 <div id="app">
 
+
     @include('partials.navbar')
     
     @auth
     @include('partials.message')
     @include('partials.category')
+
     @endauth
-    
+
     <main class="py-4">
         @yield('content')
     </main>

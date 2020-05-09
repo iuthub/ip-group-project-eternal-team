@@ -17,7 +17,10 @@
                 Price
             </label>
             <br>
-            <input type="text" class="form-control" id="price" name="price" value="{{$item->price}}">
+            <input type="number" class="form-control" id="price" name="price" value="{{$item->price}}">
+            <select id="currency" name="currency" class="form-control">
+                <option value="USD">USD</option>
+            </select>
         </div>
 
         <div class="form-group">

@@ -10,13 +10,17 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
+
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('user.create')}}">New Item</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('home')}}">Dashboard</a>
-
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('contact.us')}}">Contact Us</a>
+                </li>
+
 
             </ul>
 

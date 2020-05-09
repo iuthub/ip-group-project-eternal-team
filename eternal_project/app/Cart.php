@@ -16,6 +16,5 @@ class Cart extends Model
     public function items(){
         $this->hasMany('App\Item','item_id');
     }
-// pokaji gde ty zapors delaew blya ya zapros k db?
-// da
+
 }

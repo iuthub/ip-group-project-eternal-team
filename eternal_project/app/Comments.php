@@ -13,7 +13,7 @@ class Comments extends Model
     public function item(){
         return $this->belongsTo(Item::class,'item_id');
     }
-    public function uset(){
+    public function user(){
         return $this->belongsTo(User::class,'user_id');
     }
 

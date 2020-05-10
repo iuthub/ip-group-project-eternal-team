@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cart;
 use App\CartBought;
-
 use App\Comments;
-
-
 use App\Item;
 use App\Rating;
 use App\User;
@@ -133,11 +130,11 @@ $this->middleware('auth');
    public function getItemInfo($id){
       $item = Item::find($id);
       $user = User::find($item->user_id);
+      $comments = Comments::find($id)->get();
+//      dd($comments->user_name);
       return view('content.itemInfo',['item' => $item,
-          'user'=>$user]);
+          'user'=>$user,'comments'=>$comments]);
    }
-
-
    public function addItemToCart($id){
       $item= Item::find($id);
       $cart = new Cart();
@@ -200,22 +197,21 @@ $this->middleware('auth');
       return $rating;
    }
 
-
    public function comment(Request $request, $id){
-    $user_id = \auth()->user()->id;
+    $user_name = \auth()->user()->name;
+    $user = User::find($id);
     $comment = new Comments([
-       'user_id'=>$user_id,
+       'user_name'=>$user_name,
         'item_id'=>$id,
         'comment'=>$request->input('comment')
     ]);
     $comment->save();
-    return route('info.item',['id'=>$id]);
+    $comments = Comments::find($id)->get();
+    $item = Item::find($id);
+//    dd($comments);
+    return $this->getItemInfo($id);
    }
 
-
-   public function fetch_comment($id){
-    
-   }
 
 
 

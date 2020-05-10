@@ -27,7 +27,7 @@
 
     @include('partials.navbar')
     @include('partials.message')
-    @include('partials.category')
+{{--    @include('partials.category')--}}
 
 
     <main class="py-4">

@@ -44,3 +44,12 @@ h3 {
     opacity: 0.6;
     z-index: 1;
 }
+input:focus {
+    outline: none;
+}
+.ml--2 {
+    margin-left: -2rem;
+}
+li {
+    list-style: none;
+}

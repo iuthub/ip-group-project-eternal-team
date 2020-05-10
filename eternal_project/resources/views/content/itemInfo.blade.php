@@ -40,8 +40,18 @@
 {{--        <a href="{{route('rate.item',['id'=>$item->id,'mark'=>4])}}"><button>{{4}}</button></a>--}}
 {{--        <a href="{{route('rate.item',['id'=>$item->id,'mark'=>5])}}"><button>{{5}}</button></a>--}}
 
-
-
     </div>
 
+<div class="comments">
+      @foreach($comments as $lya)
+       <h5>{{$lya->user_name}}</h5>
+        <h6>{{$lya->comment}}</h6>
+          @endforeach
+    </div>
+    <form class="form-group" method="post" action="{{route('add.comment',['id'=>$item->id])}}">
+        <input id="comment" type="text" class="form-control" placeholder="Leave a comment here" name="comment">
+        @csrf
+        <button type="submit" class="btn btn-success">Comment</button>
+    </form>
+    
 @endsection

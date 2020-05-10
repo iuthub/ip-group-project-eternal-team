@@ -81,12 +81,7 @@ $this->middleware('auth');
        ]);
 
        $item =Item::find($id);
-//       if(Gate::denies('auth-only',$item)){
-//           return redirect()->back()->with([
-//               'error' => 'Unauthorized action'
-//           ]);
-//       }
-//       dd($item);
+
        $item->name = $request->input('name');
        $item->price = $request->input('price');
        $item->details = $request->input('details');
@@ -108,9 +103,7 @@ $this->middleware('auth');
 
    public function deleteItem($id){
         $item =Item::find($id);
-//        if(Gate::denies('auth-only',$item)){
-//            return redirect()->back()->with('error','You are not authorized to delete this! bee');
-//        }
+
        if (\auth()->user()->id != $item->user_id){
            return redirect()->back()->with('error','Unauthorized action!');
        }

@@ -2,6 +2,7 @@
 @extends('layouts.master')
 
 @section('content')
+
         <form action="{{route('search.item')}}" method="get" class="form-group">
             <label for="search">
                 <input type="text" name="search" id="search" class="form-control">
@@ -152,6 +153,28 @@
                                     </svg>
 
 
+
+        <div>
+
+            <div class="list-group list-group-flush">
+                <form method="get" action="{{route('display.category')}}">
+                    <label for="category">Category</label>
+                    <select id="category" name="category">
+                        <option value="services">Clothing</option>
+                        <option value="sports">Sports</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="others">Others</option>
+                        <option value="animals">Animals</option>
+                        <option value="books">Books</option>
+                        <option value="cars">Cars</option>
+                        <option value="services">Services</option>
+                    </select>
+                    <button type="submit" class="btn btn-success">Search</button>
+                </form>
+            </div>
+        </div>
+
+
                                     <h3 class="f-w-40 m-auto"><a href="">Electronic</a></h3>
                                 </li>
                             </ul>
@@ -241,4 +264,17 @@
                 </div>
             </div>
         </div>
+
+         <h1>{{ $item->name }}</h1>
+          <p>{{ $item->price }} {{$item->currency}}</p>
+        @if($item->user_id!=auth()->user()->id)
+        <a href="{{route('cart.item',['id'=>$item->id])}}">Add to Cart</a>
+        @endif
+    </div>
+    </a>
+    @endforeach
+</div>
+
+
+
 @endsection

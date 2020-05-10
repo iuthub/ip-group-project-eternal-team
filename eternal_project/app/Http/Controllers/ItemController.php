@@ -35,8 +35,6 @@ $this->middleware('auth');
           'price'=>'required',
           'image' => 'file|image|max:4000',
       ]);
-
-
       $item =new Item([
           'name'=>$request->input('name'),
           'price'=>$request->input('price'),
@@ -57,11 +55,7 @@ $this->middleware('auth');
           return $request;
           $item->image='';
       }
-
       $item->user_id = auth()->user()->id;
-//      if(Gate::denies('auth-only',$item)){
-//          return redirect()->back()->with('error','You are not authorized to delete this! bee');
-//      };
 
       $item->save();
       return redirect()->route('main.index')->with('success','Item added to the store!');
@@ -70,7 +64,11 @@ $this->middleware('auth');
 
 
    public function getEditItem($id){
+
         $item =Item::find($id);
+       if (\auth()->user()->id != $item->user_id){
+           return redirect()->back()->with('error','Unauthorized action!');
+       }
         return  view('user.edit',['item' => $item, 'id'=>$id]);
    }
 
@@ -113,8 +111,13 @@ $this->middleware('auth');
 //        if(Gate::denies('auth-only',$item)){
 //            return redirect()->back()->with('error','You are not authorized to delete this! bee');
 //        }
-       $item_from_cart = Cart::find($id);
-       $item_from_cart->delete();
+       if (\auth()->user()->id != $item->user_id){
+           return redirect()->back()->with('error','Unauthorized action!');
+       }
+        $item_from_cart = Cart::find($id);
+        if ($item_from_cart!=null){
+        $item_from_cart->delete();
+        }
         $item->delete();
        return redirect()->route('home')->with('success','Item Deleted!');
    }

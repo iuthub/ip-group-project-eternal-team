@@ -130,7 +130,9 @@ $this->middleware('auth');
    public function getItemInfo($id){
       $item = Item::find($id);
       $user = User::find($item->user_id);
-      $comments = Comments::find($id)->get();
+      $comments = Comments::all();
+      $comments_for_show = [];
+//      dd($comments);
 //      dd($comments->user_name);
       return view('content.itemInfo',['item' => $item,
           'user'=>$user,'comments'=>$comments]);
@@ -198,10 +200,12 @@ $this->middleware('auth');
    }
 
    public function comment(Request $request, $id){
+    $this->validate($request,[
+       'comment'=>'required'
+    ]);
     $user_name = \auth()->user()->name;
-    $user = User::find($id);
     $comment = new Comments([
-       'user_name'=>$user_name,
+        'user_name'=>$user_name,
         'item_id'=>$id,
         'comment'=>$request->input('comment')
     ]);

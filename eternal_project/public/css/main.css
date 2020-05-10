@@ -16,6 +16,22 @@ a:hover {
 .f-w-40 {
     font-weight: 400;
 }
+.item-card-view{
+    /*flex-grow: 1;*/
+    margin: 10px;
+    border: 1px solid crimson;
+    border-radius: 5px;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+
+.index-items-table{
+    display: flex;
+    flex-flow: row;
+}
 
 .b-border-20 {
     border-radius: 20px !important;

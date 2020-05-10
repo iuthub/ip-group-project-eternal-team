@@ -1,5 +1,5 @@
 
-<div >
+<div>
 
     <div class="list-group list-group-flush">
         <form method="get" action="{{route('display.category')}}">

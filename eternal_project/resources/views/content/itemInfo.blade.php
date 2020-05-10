@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-
 <div>
     <div class="bg-dark">
         <div class="container">
@@ -39,4 +38,5 @@
     </div>
 </div>
 
+    
 @endsection

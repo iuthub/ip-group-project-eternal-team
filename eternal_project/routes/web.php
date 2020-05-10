@@ -81,6 +81,10 @@ Route::group(['middleware'=>['web','auth']],function (){
         'uses' => 'ItemController@getItemInfo',
         'as' => 'info.item'
     ]);
+    Route::post('comment/{id}',[
+        'uses'=>'ItemController@comment',
+        'as'=>'add.comment'
+    ]);
 
 
     Route::get('/cart/item/{id}',

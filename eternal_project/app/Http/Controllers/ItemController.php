@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cart;
 use App\CartBought;
-
 use App\Comments;
-
-
 use App\Item;
 use App\Rating;
 use App\User;
@@ -38,8 +35,6 @@ $this->middleware('auth');
           'price'=>'required',
           'image' => 'file|image|max:4000',
       ]);
-
-
       $item =new Item([
           'name'=>$request->input('name'),
           'price'=>$request->input('price'),
@@ -60,11 +55,7 @@ $this->middleware('auth');
           return $request;
           $item->image='';
       }
-
       $item->user_id = auth()->user()->id;
-//      if(Gate::denies('auth-only',$item)){
-//          return redirect()->back()->with('error','You are not authorized to delete this! bee');
-//      };
 
       $item->save();
       return redirect()->route('main.index')->with('success','Item added to the store!');
@@ -73,7 +64,11 @@ $this->middleware('auth');
 
 
    public function getEditItem($id){
+
         $item =Item::find($id);
+       if (\auth()->user()->id != $item->user_id){
+           return redirect()->back()->with('error','Unauthorized action!');
+       }
         return  view('user.edit',['item' => $item, 'id'=>$id]);
    }
 
@@ -116,8 +111,13 @@ $this->middleware('auth');
 //        if(Gate::denies('auth-only',$item)){
 //            return redirect()->back()->with('error','You are not authorized to delete this! bee');
 //        }
-       $item_from_cart = Cart::find($id);
-       $item_from_cart->delete();
+       if (\auth()->user()->id != $item->user_id){
+           return redirect()->back()->with('error','Unauthorized action!');
+       }
+        $item_from_cart = Cart::find($id);
+        if ($item_from_cart!=null){
+        $item_from_cart->delete();
+        }
         $item->delete();
        return redirect()->route('home')->with('success','Item Deleted!');
    }
@@ -133,11 +133,13 @@ $this->middleware('auth');
    public function getItemInfo($id){
       $item = Item::find($id);
       $user = User::find($item->user_id);
+      $comments = Comments::all();
+      $comments_for_show = [];
+//      dd($comments);
+//      dd($comments->user_name);
       return view('content.itemInfo',['item' => $item,
-          'user'=>$user]);
+          'user'=>$user,'comments'=>$comments]);
    }
-
-
    public function addItemToCart($id){
       $item= Item::find($id);
       $cart = new Cart();
@@ -200,22 +202,23 @@ $this->middleware('auth');
       return $rating;
    }
 
-
    public function comment(Request $request, $id){
-    $user_id = \auth()->user()->id;
+    $this->validate($request,[
+       'comment'=>'required'
+    ]);
+    $user_name = \auth()->user()->name;
     $comment = new Comments([
-       'user_id'=>$user_id,
+        'user_name'=>$user_name,
         'item_id'=>$id,
         'comment'=>$request->input('comment')
     ]);
     $comment->save();
-    return route('info.item',['id'=>$id]);
+    $comments = Comments::find($id)->get();
+    $item = Item::find($id);
+//    dd($comments);
+    return $this->getItemInfo($id);
    }
 
-
-   public function fetch_comment($id){
-    
-   }
 
 
 

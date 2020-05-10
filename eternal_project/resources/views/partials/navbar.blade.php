@@ -67,7 +67,7 @@
             <div class="row justify-content-between">
                 <div class="col-3 d-flex">
                     <div class="border-right border-dark m-auto">
-                        <a href="">
+                        <a href="{{route('main.index')}}">
                             <img src="{{ asset('img/Logo 1.png') }}" alt="">
                         </a>
                     </div>
@@ -76,34 +76,58 @@
                 <div class="col-7 m-auto">
                     <div class="d-flex w-75 m-auto">
                         <div class="w-100 m-auto custom-red b-border-20">
-                            <form action="" class="m-0">
-                                <input type="text" class="w-75 px-3 py-1 b-border-20 border border-danger">
-                                <button class="b-border-20 py-1 border border-danger ml--2 bg-white" type="submit">All Categories</button>
+                            <form action="{{route('search.item')}}" class="m-0" method="get">
+                                <input type="text" class="w-75 px-3 py-1 b-border-20 border border-danger" name="search"  id="search">
+                                <button class="b-border-20 py-1 border border-danger ml--2 bg-white" type="submit">Search</button>
+                                @csrf
                             </form>
                         </div>
-                        <a class="pl-2" href="">
-                            <img class="w-75 m-auto" src="{{ asset('img/union.png') }}" alt="">
-                        </a>
                     </div>
-{{--                    <div class="w-75 m-auto">--}}
-{{--                        <ul class="d-inline-flex text-left pl-0">--}}
-{{--                            <li class="border-right px-2"><a class="silver-color" href="">Mask</a></li>--}}
-{{--                            <li class="border-right px-2"><a class="silver-color" href="">Voots</a></li>--}}
-{{--                            <li class="border-right px-2"><a class="silver-color" href="">Boof</a></li>--}}
-{{--                            <li class="border-right px-2"><a class="silver-color" href="">Potato</a></li>--}}
-{{--                            <li class="border-right px-2"><a class="silver-color" href="">Chains</a></li>--}}
-{{--                            <li class="border-right px-2"><a class="silver-color" href="">Switch</a></li>--}}
-{{--                        </ul>--}}
-{{--                    </div>--}}
                 </div>
                 <div class="col-2 m-auto">
-                    <a href="">
-                        <img src="{{ asset('img/Vector.png') }}" alt="">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('contact.us')}}">Contact Us</a>
+                    </li>
+                    <a href="{{route('home')}}">
+                        <img src="{{ asset('img/Vector.png') }}" alt="#">
                     </a>
+                    @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                    @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                    @endif
+                    @else
+                        <a class="pl-2" href="{{route('mycart.items',['id'=>auth()->user()->id])}}">
+                            <img class="w-75 m-auto" src="{{ asset('img/union.png') }}" alt="">
+                        </a>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    @endguest
+
                 </div>
             </div>
         </div>
     </div>
+
 
 
 

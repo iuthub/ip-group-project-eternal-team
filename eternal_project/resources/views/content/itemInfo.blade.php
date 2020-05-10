@@ -44,8 +44,12 @@
 
 <div class="comments">
       @foreach($comments as $lya)
+          @if($item->id == $lya->item_id)
        <h5>{{$lya->user_name}}</h5>
         <h6>{{$lya->comment}}</h6>
+        @else
+              <h1>No comments for this post</h1>
+        @endif
           @endforeach
     </div>
     <form class="form-group" method="post" action="{{route('add.comment',['id'=>$item->id])}}">
@@ -53,5 +57,7 @@
         @csrf
         <button type="submit" class="btn btn-success">Comment</button>
     </form>
+
+
     
 @endsection

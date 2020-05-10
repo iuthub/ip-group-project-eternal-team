@@ -1,61 +1,42 @@
 @extends('layouts.master')
 
 @section('content')
-
-    <h1>Author: {{$user->name}}</h1>
-
-    <div class="item-card-view">
-        <img src="{{asset('uploads/item/' . $item->image)}}"  width="500px;" height="500px" alt="image" >
-        <h1>{{$item->name}}</h1>
-        <p>{{$item->price}}  {{$item->currency}}</p>
-        <p>Cateogry:{{$item->category}}</p>
-        <p>State: {{$item->state}}</p>
-        <p>
-            Details: {{$item->details}}
-        </p>
-        <p>
-           Date of post: {{$item->created_at}}
-        </p>
-        <p>Current Rating: {{$item->rating}}</p>
-        <p>Rate:</p>
-{{--        @for($i=0;$i<6;$i+1)--}}
-{{--            @dd($i)--}}
-        <form method="post" action="{{route('rate.item',['id'=>$item->id])}}">
-            @csrf
-            @method('post')
-            <select name="mark" id="mark">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            <button type="submit">Rate</button>
-        </form>
-{{--        @endfor--}}
-{{--        <a href="{{route('rate.item',['id'=>$item->id,'mark'=>1])}}"><button>{{1}}</button></a>--}}
-{{--        <a href="{{route('rate.item',['id'=>$item->id,'mark'=>2])}}"><button>{{2}}</button></a>--}}
-{{--        <a href="{{route('rate.item',['id'=>$item->id,'mark'=>3])}}"><button>{{3}}</button></a>--}}
-{{--        <a href="{{route('rate.item',['id'=>$item->id,'mark'=>4])}}"><button>{{4}}</button></a>--}}
-{{--        <a href="{{route('rate.item',['id'=>$item->id,'mark'=>5])}}"><button>{{5}}</button></a>--}}
-
+<div>
+    <div class="bg-dark">
+        <div class="container">
+            <ul class="d-inline-flex py-3 m-auto">
+                <li class="mx-4">
+                    <a class="text-white" href="">Homepage</a>
+                </li>
+                <li class="mx-4">
+                    <a class="text-white" href="">Special Offer</a>
+                </li>
+                <li class="mx-4">
+                    <a class="text-white" href="">Hottest</a>
+                </li>
+                <li class="mx-4">
+                    <a class="text-white" href="">Reviews</a>
+                </li>
+            </ul>
+        </div>
     </div>
-
-<div class="comments">
-      @foreach($comments as $lya)
-          @if($item->id == $lya->item_id)
-       <h5>{{$lya->user_name}}</h5>
-        <h6>{{$lya->comment}}</h6>
-        @endif
-          @endforeach
+    <div class="container m-5">
+        <div class="row">
+            <div class="col-4 b-border-20">
+                <img class="b-border-20 w-100" src="{{ asset('img/JBlue1.png') }}" alt="">
+                <h3 class="p-4">Ratings:12</h3>
+            </div>
+            <div class="col-8">
+                <small>Product</small>
+                <h2>Pikachu</h2>
+                <small>Description</small>
+                <h2>Jeans Jacket with Pikachu print on back</h2>
+                <small>Value</small>
+                <h2>25$</h2>
+            </div>
+        </div>
     </div>
-    <form class="form-group" method="post" action="{{route('add.comment',['id'=>$item->id])}}">
-        <input id="comment" type="text" class="form-control" placeholder="Leave a comment here" name="comment">
-        @csrf
-        <button type="submit" class="btn btn-success">Comment</button>
-    </form>
-
+</div>
 
     
 @endsection

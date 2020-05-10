@@ -269,7 +269,14 @@
 {{--            </div>--}}
 {{--        </div>--}}
 
-
-
-
+         <h1>{{ $item->name }}</h1>
+          <p>{{ $item->price }} {{$item->currency}}</p>
+        @if($item->user_id!=auth()->user()->id)
+        <a href="{{route('cart.item',['id'=>$item->id])}}">Add to Cart</a>
+        @endif
+    </div>
+    </a>
+    @endforeach
+</div>
+ 
 @endsection

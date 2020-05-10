@@ -1,0 +1,46 @@
+a:hover {
+    text-decoration: none !important;
+}
+.silver-color {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.b-border {
+    border-radius: 16px;
+}
+
+.f-w-30 {
+    font-weight: 300;
+}
+
+.f-w-40 {
+    font-weight: 400;
+}
+
+.b-border-20 {
+    border-radius: 20px !important;
+}
+
+button {
+    outline: none;
+    border: none;
+}
+h3 {
+    font-size: 20px !important;
+}
+.custom-red {
+    background: #F23545;
+}
+.custom-silver {
+    background: #FCFCFC;
+}
+.card small {
+    text-decoration: line-through;
+}
+.own-svg {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    opacity: 0.6;
+    z-index: 1;
+}

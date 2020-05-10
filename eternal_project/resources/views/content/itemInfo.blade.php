@@ -47,8 +47,6 @@
           @if($item->id == $lya->item_id)
        <h5>{{$lya->user_name}}</h5>
         <h6>{{$lya->comment}}</h6>
-        @else
-              <h1>No comments for this post</h1>
         @endif
           @endforeach
     </div>

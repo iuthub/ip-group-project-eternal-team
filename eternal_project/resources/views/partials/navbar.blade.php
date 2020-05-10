@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+{{--<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">--}}
 {{--    <div class="container">--}}
 {{--        <a class="navbar-brand" href="{{ url('/') }}">--}}
 {{--            Mum Buy--}}
@@ -73,9 +73,9 @@
                     </div>
                     <h3 class="p-2">BUY<br>SELL <br>STAY AT HOME</h3>
                 </div>
-                <div class="col-7 m-auto">
+                <div class="col-6 m-auto">
                     <div class="d-flex w-75 m-auto">
-                        <div class="w-100 m-auto custom-red b-border-20">
+                        <div class="w-75 m-auto custom-red b-border-20">
                             <form action="{{route('search.item')}}" class="m-0" method="get">
                                 <input type="text" class="w-75 px-3 py-1 b-border-20 border border-danger" name="search"  id="search">
                                 <button class="b-border-20 py-1 border border-danger ml--2 bg-white" type="submit">Search</button>
@@ -84,10 +84,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-2 m-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('contact.us')}}">Contact Us</a>
-                    </li>
+                <div class="col-3 m-auto d-flex">
                     <a href="{{route('home')}}">
                         <img src="{{ asset('img/Vector.png') }}" alt="#">
                     </a>
@@ -101,26 +98,27 @@
                         </li>
                     @endif
                     @else
-                        <a class="pl-2" href="{{route('mycart.items',['id'=>auth()->user()->id])}}">
-                            <img class="w-75 m-auto" src="{{ asset('img/union.png') }}" alt="">
+                        <a class="pl-2 m-auto" href="{{route('mycart.items',['id'=>auth()->user()->id])}}">
+                            <img class="m-auto" src="{{ asset('img/union.png') }}" alt="">
                         </a>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item m-auto dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+                                <a class="nav-link dropdown-item" href="{{route('contact.us')}}">Contact Us</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
                             </div>
                         </li>
+
                     @endguest
 
                 </div>
@@ -137,6 +135,6 @@
 
 
 
-</nav>
+{{--</nav>--}}
 
 
